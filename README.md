@@ -1,11 +1,11 @@
 rest
 -
-å
+
 [![CircleCI](https://circleci.com/gh/thepkg/rest.svg?style=svg)](https://circleci.com/gh/thepkg/rest)
 [![Go Report Card](https://goreportcard.com/badge/github.com/thepkg/rest)](https://goreportcard.com/report/github.com/thepkg/rest)
 [![godoc](https://godoc.org/github.com/thepkg/rest?status.svg)](https://godoc.org/github.com/thepkg/rest)
 
-Package `rest` it's tiny lightweight package which help to work with RESTful API and JSON API.
+Package `rest` it's tiny lightweight package which helps to work with RESTful API and JSON API.
 
 ## Installation
 
