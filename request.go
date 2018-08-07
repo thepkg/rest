@@ -1,7 +1,7 @@
 package rest
 
 import (
-	"./request"
+	"github.com/thepkg/rest/request"
 )
 
 var (

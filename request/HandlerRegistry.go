@@ -3,7 +3,7 @@ package request
 import (
 	"net/http"
 
-	"../response"
+	"github.com/thepkg/rest/response"
 )
 
 // HandlerRegistry this is simple proxy between top level application and native "net/http" package.

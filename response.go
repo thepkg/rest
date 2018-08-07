@@ -3,7 +3,7 @@ package rest
 import (
 	"net/http"
 
-	"./response"
+	"github.com/thepkg/rest/response"
 )
 
 // Error sends error HTTP response.
