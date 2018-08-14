@@ -13,7 +13,7 @@ Package `rest` it's tiny lightweight package which helps to work with RESTful AP
 
 ## Usage
 
-````
+````go
 import "github.com/thepkg/rest"
 
 func main() {
