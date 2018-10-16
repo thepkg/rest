@@ -10,14 +10,14 @@ import (
 // This registry holds map between HTTP method + pattern (URL path) and handler function,
 // and performs routing for HTTP requests.
 type HandlerRegistry struct {
-	handlers      map[HandlerKey]Handler
+	handlers      map[HandlerKey]func(http.ResponseWriter, *http.Request)
 	boundPatterns map[string]bool
 }
 
 // NewHandlerRegistry returns new instance of HandlerRegistry.
 func NewHandlerRegistry() HandlerRegistry {
 	hr := HandlerRegistry{}
-	hr.handlers = make(map[HandlerKey]Handler)
+	hr.handlers = make(map[HandlerKey]func(http.ResponseWriter, *http.Request))
 	hr.boundPatterns = make(map[string]bool)
 
 	return hr
@@ -26,13 +26,13 @@ func NewHandlerRegistry() HandlerRegistry {
 // Handle performs next steps:
 // 1) add handler into HandlerRegistry.
 // 2) bind pattern (URL path) to HandlerRegistry.
-func (hr HandlerRegistry) Handle(method string, pattern string, handler Handler) {
+func (hr HandlerRegistry) Handle(method string, pattern string, handler func(http.ResponseWriter, *http.Request)) {
 	key := MakeKey(method, pattern)
 	hr.add(key, handler)
 	hr.bind(pattern)
 }
 
-func (hr HandlerRegistry) add(key HandlerKey, handler Handler) {
+func (hr HandlerRegistry) add(key HandlerKey, handler func(http.ResponseWriter, *http.Request)) {
 	hr.handlers[key] = handler
 }
 
