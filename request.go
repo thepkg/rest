@@ -2,6 +2,7 @@ package rest
 
 import (
 	"net/http"
+	"fmt"
 
 	"github.com/thepkg/rest/request"
 )
@@ -47,4 +48,17 @@ func DELETE(pattern string, handler func(http.ResponseWriter, *http.Request)) {
 // OPTIONS registers the OPTIONS HTTP method handler function for the given pattern.
 func OPTIONS(pattern string, handler func(http.ResponseWriter, *http.Request)) {
 	handlerRegistry.Handle("OPTIONS", pattern, handler)
+}
+
+// MustUnmarshalBody performs read and json.Unmarshal body into data.
+func MustUnmarshalBody(r *http.Request, data interface{}) {
+	body, err := ioutil.ReadAll(r.Body)
+	if err != nil {
+		panic(fmt.Errorf("failed to read request body, error: %s", err))
+	}
+
+	err = json.Unmarshal(body, data)
+	if err != nil {
+		panic(fmt.Errorf("failed to unmarshal request body, error: %s", err))
+	}
 }
