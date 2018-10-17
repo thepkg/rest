@@ -1,8 +1,9 @@
 package rest
 
 import (
-	"net/http"
+	"encoding/json"
 	"fmt"
+	"net/http"
 
 	"github.com/thepkg/rest/request"
 )
